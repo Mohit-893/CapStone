@@ -1,0 +1,139 @@
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  /* background: #1C8ef9 !important; */
+  min-height: 100vh;
+  display: flex;
+  font-weight: 400;
+  font-family: 'Fira Sans', sans-serif;
+  /* background-image: url('https://cdn.pixabay.com/photo/2022/10/17/02/46/man-7526514_960_720.jpg'); */
+   background-image: url('https://www.bing.com/images/search?view=detailV2&ccid=xPUa7w8i&id=D04CE3339CB1B68A5556FE0380558DB81305A40D&thid=OIP.xPUa7w8iSSJp0FnzP_J2KQHaEK&mediaurl=https%3a%2f%2fwallpapershome.com%2fimages%2fwallpapers%2fwwdc-2018-3840x2160-white-3d-4k-18713.jpg&exph=2160&expw=3840&q=4K+White+High-Tech+Wallpaper&simid=608036136900888059&FORM=IRPRST&ck=5CDAFE88CE0D7375EA286F18DE9012D9&selectedIndex=3&ajaxhist=0&ajaxserp=0.jpg'); 
+  /* background-image: url('https://images.squarespace-cdn.com/content/v1/5d39b86b4c1e5c000178e981/1565602627078-8HMSCJOZKRUVBL6M09SN/WIB.jpg'); */
+   /* background-image: url('./background-2.avif'); */
+   color: white;
+}
+
+h1,h2,h3,h4,h5,h6,label,span {
+  font-weight: 500;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+body, html, App, #root, .auth-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.navbar-light{
+  background-color: #ffffff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+}
+
+.auth-wrapper {
+  display: flex;
+}
+
+.auth-inner {
+  width: 50%;
+  margin: auto;
+  /* background: #ffffff; */
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 40px 55px 45px 55px;
+  border-radius: 15px;
+  transition: all .3s;
+  /* opacity: 0.8; */
+  /* border: 2px solid black; */
+}
+
+.auth-wrapper .form-control:focus {
+  border-color: #167bff;
+  box-shadow: none;
+}
+
+.auth-wrapper h3 {
+  text-align: center;
+  margin: 0;
+  line-height: 1;
+  padding-bottom: 20px;
+}
+
+.custom-control-label {
+  font-weight: 400;
+}
+
+.forgot-password, .forgot-password a {
+  text-align: right;
+  font-size: 13px;
+  padding-top: 10px;
+  color: #7f7d7d;
+  margin: 0;
+}
+
+.forgot-password a{
+  color: #167bff;
+}
+.leftbar {
+  width:20%;
+  /* opacity:0.8; */
+  /* border:2px solid black; */
+  position: fixed;
+  height:100%;
+  font-weight: 500;
+  color:black;
+  margin-right:78%;
+  /* margin-left: 2%; */
+  /* margin: 0% 2% 0% 80%; */
+}
+
+.rightbar {
+  width:20%;
+  position: fixed;
+ margin-left: 78%;
+ height:100%;
+ font-weight: 500;
+ color:rgb(43, 41, 41);
+ /* filter: brightness(150%); */
+}
+

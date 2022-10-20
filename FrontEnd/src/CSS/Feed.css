@@ -1,0 +1,38 @@
+.card:hover {
+background-color:rgb(245, 223, 234)
+}
+.post {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: white;
+    margin-top: 10px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    max-width: 700px;
+    box-shadow: 0px 5px 8px -9px solid rgab(0, 0, 0, 0.5);
+    opacity:0.8;
+  }
+  
+  .post__info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .post__info > h4 {
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 10px;
+  }
+  
+  .post__body {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+  .post__footer {
+    display: inline;
+    align-items: center;
+    margin-top: 5px;
+    
+  }

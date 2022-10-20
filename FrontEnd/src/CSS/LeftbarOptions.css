@@ -1,0 +1,29 @@
+.sidebarOptions1 {
+    display: flex;
+    flex-direction: column;
+}
+.sidebarOptions{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+.sidebarOptions img{
+height: 40px;
+width: 50px;
+border-radius: 5px;
+margin-left: 20px;
+margin-right: 10px;
+}
+.sidebarOptions p{
+    margin-top: 5px;
+}
+.sidebarOptions:hover{
+    opacity:0.5;
+    border-radius: 5px;
+    color:rgb(255, 183, 0);
+}
+.sidebarOptions img:hover{
+    height: 50px;
+    width: 60px;
+}

@@ -1,7 +1,8 @@
 import React, { Component, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import Feed from './Feed';
+import BeforeLogin from './Feeds/BeforeLogin';
+import AfterLogin from './Feeds/AfterLogin';
 
 class Home extends Component {
     constructor(props) {
@@ -23,35 +24,39 @@ class Home extends Component {
     }
     
     render() {
-
-
         const { DataisLoaded, items} = this.state;
         if(!DataisLoaded) return <div><h1>Wait for some time...</h1></div>
 
-        if(this.props.user){
+        if(this.props.state){
             return (
-                <h2>Hi {this.props.user.first_name} {this.props.user.last_name}</h2>
-            )
+                <div>
+                {
+                    items.map((item) => (
+                        <>
+                        <AfterLogin id={item.id} name={item.name} email={item.email} body={item.body}/>
+                        <br/>
+                        </> 
+                    ))
+                }
+                </div>
+            );
         }
-        return (
-            <div>
-            {/* <h2>You are not logged in</h2> */}
-            {
-                items.map((item) => (
-                    // <ol key = {item.id}>
-                    //     UserName: {item.username},
-                    //     FullName: {item.name},
-                    //     Email : {item.email}
-                    // </ol>
-                    <>
-                    <Feed id={item.id} name={item.name} email={item.email} body={item.body}/>
-                    <br/>
-                    </>
-                    
-                ))
-            }
-            </div>
-        );
+        else{
+            return(
+                <div>
+                {
+                    items.map((item) => (
+                        <>
+                        <BeforeLogin id={item.id} name={item.name} email={item.email} body={item.body}/>
+                        <br/>
+                        </>    
+                    ))
+                }
+                </div>
+            );
+            
+        }
+       
     }
 }
 

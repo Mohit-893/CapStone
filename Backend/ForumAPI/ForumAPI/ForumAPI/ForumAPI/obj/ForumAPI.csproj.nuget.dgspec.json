@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mohit\\Downloads\\ForumAPI\\ForumAPI\\ForumAPI\\ForumAPI\\ForumAPI.csproj": {}
+    "D:\\CapstoneProject\\Backend\\ForumAPI\\ForumAPI\\ForumAPI\\ForumAPI\\ForumAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mohit\\Downloads\\ForumAPI\\ForumAPI\\ForumAPI\\ForumAPI\\ForumAPI.csproj": {
+    "D:\\CapstoneProject\\Backend\\ForumAPI\\ForumAPI\\ForumAPI\\ForumAPI\\ForumAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mohit\\Downloads\\ForumAPI\\ForumAPI\\ForumAPI\\ForumAPI\\ForumAPI.csproj",
+        "projectUniqueName": "D:\\CapstoneProject\\Backend\\ForumAPI\\ForumAPI\\ForumAPI\\ForumAPI\\ForumAPI.csproj",
         "projectName": "ForumAPI",
-        "projectPath": "C:\\Users\\mohit\\Downloads\\ForumAPI\\ForumAPI\\ForumAPI\\ForumAPI\\ForumAPI.csproj",
+        "projectPath": "D:\\CapstoneProject\\Backend\\ForumAPI\\ForumAPI\\ForumAPI\\ForumAPI\\ForumAPI.csproj",
         "packagesPath": "C:\\Users\\mohit\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mohit\\Downloads\\ForumAPI\\ForumAPI\\ForumAPI\\ForumAPI\\obj\\",
+        "outputPath": "D:\\CapstoneProject\\Backend\\ForumAPI\\ForumAPI\\ForumAPI\\ForumAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mohit\\AppData\\Roaming\\NuGet\\NuGet.Config",

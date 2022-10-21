@@ -2,13 +2,14 @@ import React, { Component , useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = (props) => {
     const [success, setSuccess] = useState(false);
     const [Password, setPassword] = useState('');
     const [Username, setUsername] = useState('');
     const[JwtToken,setJwtToken]=useState();
+    
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -20,51 +21,37 @@ const Login = () => {
 
         await axios.post("https://localhost:44384/Api/login/gettoken",data).then(res =>{
             localStorage.setItem('token',res.token);
-            console.log(data);
+            // console.log(data);
             alert("login done")
             setSuccess(true);
+            props.func(true,data.Username);
             const token = res.data;
-            console.log(res.data);
+            // console.log(res.data);
             let decoded= jwt_decode(token);
-            console.log(decoded);  
+            // console.log(decoded);  
             // window.decoded=decoded ;
             setJwtToken(decoded);
 
         }).catch(err => {
-            console.log(err);
+            // console.log(err);
             alert("Wrong Password!!!")
         })
-
-        // setJwtToken(Window.decoded);
     }
 
     useEffect(() => {
         if(JwtToken)
         {
-        console.log("founded",JwtToken);
-        console.log("email",JwtToken.Email);
+        // console.log("founded",JwtToken);
+        // console.log("email",JwtToken.Email);
         }
     }, [JwtToken])
 
-    // let user = {
-    //     username: JwtToken.username,
-    //     email : JwtToken.Email
-    // }
-
-    // const ShowValue= ()=>{
-    //     console.log("token found ",JwtToken);
-    // }
+    
   return (
 
     <>
     {success ? (
-        <section>
-            <h1>Success!</h1>
-            <p>
-                <a href="#">Login done {JwtToken.NameIdentifier} {JwtToken.Username}</a>
-            </p>
-        </section>
-        // <Link className="nav-link" to={"/login"} user={JwtToken}>Data</Link>
+        <Navigate to={"/"}/>
     ) : (
         <form onSubmit={handleSubmit}>
         <h3>Login</h3>

@@ -16,49 +16,44 @@ import Tasktodo from './Components/Tasktodo';
 
 export default class App extends Component {
 
-  state = {};
-  componentDidMount() {
-    axios.get('https://localhost:44384/Api/login/GetUserdetails').then(
-        res => {
-            this.setUser(res.data);
-            console.log(res);
-        },
-        err => {
-            console.log(err)
-        }
-    )
-};
+  state = {  
+    islogin:'',
+    username:'',
+  };
 
-setUser = user => {
+
+
+pull_data = (data,name) =>{
   this.setState({
-    user:user
+    islogin:data,
+    username:name
   });
 }
 
   render(){
-
+    const {islogin ,username } = this.state;
+    // console.log(islogin);
   return (
     <BrowserRouter>
     <div className="App">
-      <Nav user={this.state.user} setUser={this.setUser}/>
+      <Nav state={islogin} name={username}/>
       <br/><br/><br/><br/>
       <div className='d-flex justify-content-center'>
         <div className='leftbar'><LeftSideBar/></div>
         <div className='auth-inner'>
         <Routes>
-            <Route exact path="/" element={<Home user={this.state.user}/>} />
+            <Route exact path="/" element={<Home state={islogin} name={username}/>} />
             {/* <Route exact path="/" component={()=><Home user={this.state.user}/>} /> */}
-            <Route exact path="/login" element={<Login setUser={this.setUser}/>} />
+            <Route exact path="/login" element={<Login func={this.pull_data}/>} />
             <Route exact path="/register" element={<Register/>} />
             <Route exact path="/forgot" element={<Forgot/>} />
             <Route exact path="/home" element={<Post/>} />
           </Routes>
         </div>
         <div className='rightbar'>
-    
           <RandomJoke/>
-
           <Tasktodo/>
+          <Weather/>
         </div>
         {/* <div className='rightbar'><Weather/></div> */}
 

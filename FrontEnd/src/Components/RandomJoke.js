@@ -10,7 +10,6 @@ class RandomJoke extends Component {
     this.state = {
       items: [],
       DataisLoaded: false,
-      count: 0,
     };
   }
   componentDidMount() {
@@ -20,13 +19,12 @@ class RandomJoke extends Component {
       this.setState({
         items: json,
         DataisLoaded: true,
-        count: 0,
       });
     });
   }
-  // refreshPage() {
-  //   this.setState2({count: count+1})
-  // }
+  refreshPage() {
+    window.location.reload();
+  }
   render() {
     const { DataisLoaded, items, count } = this.state;
     if (!DataisLoaded)
@@ -48,7 +46,7 @@ class RandomJoke extends Component {
               {items.punchline}
             </p>
             <p>{count}</p>
-            <a href="#" class="btn btn-primary" onClick={() => this.setState({count : this.state.count +1})}>Refresh</a>
+            <a href="#" class="btn btn-primary" onClick={this.refreshPage}>Refresh</a>
           </div>
         </div>
         <div></div>

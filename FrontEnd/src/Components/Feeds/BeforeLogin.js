@@ -1,9 +1,6 @@
-// import React from 'react';
-import '../CSS/Feed.css'
-import React, { useState } from 'react';
+import React,{useState} from 'react';
 
-
-function Feed(props) {
+function BeforeLogin(props) {
     const [thumbsup, setthumbsup] = useState(<i class="bi bi-hand-thumbs-up"></i>);
     const [thumbsdown, setthumbsdown] = useState(<i class="bi bi-hand-thumbs-down"></i>);
     const [up,setUp] = useState(false);
@@ -64,11 +61,11 @@ function Feed(props) {
                 <h4><center>{props.name}</center></h4>
                 <small>{props.id}</small>
             </div>
-            <div className='post_body'>
-                <p>{props.body}</p>
+            <div className='post_body' style={{filter: 'blur(2px)'}}>
+                <p >{props.body}</p>
                 <button className='post_btnAnswer'>{props.email}</button><br/>
-            </div>
-            <div class="container-fluid">
+            </div >
+            <div class="container-fluid" style={{filter: 'blur(2px)'}}>
                 <div class="row">
                     <div class="col" onClick={setthumbsupbutton}> {thumbsup}</div>
                     <div class="col" onClick={setthumbsdownbutton}>{thumbsdown}</div>
@@ -81,4 +78,4 @@ function Feed(props) {
     );
 }
 
-export default Feed;
+export default BeforeLogin;

@@ -19,6 +19,7 @@ export default class App extends Component {
   state = {  
     islogin:'',
     username:'',
+    post:'',
   };
 
 
@@ -26,28 +27,38 @@ export default class App extends Component {
 pull_data = (data,name) =>{
   this.setState({
     islogin:data,
-    username:name
+    username:name,
+    
   });
+}
+
+pull_post = (data) => {
+  // console.log(this.state.post);
+  this.setState({
+    post:data, 
+  })
+  // console.log(this.state.post);
 }
 
   render(){
     const {islogin ,username } = this.state;
-    // console.log(islogin);
+    // console.log(this.state.post);
   return (
     <BrowserRouter>
     <div className="App">
       <Nav state={islogin} name={username}/>
       <br/><br/><br/><br/>
       <div className='d-flex justify-content-center'>
-        <div className='leftbar'><LeftSideBar/></div>
+        <div className='leftbar'><LeftSideBar  func={this.pull_post}/></div>
         <div className='auth-inner'>
         <Routes>
-            <Route exact path="/" element={<Home state={islogin} name={username}/>} />
+            <Route exact path="/" element={<Home state={islogin} name={username}  post={this.state.post}/>} />
             {/* <Route exact path="/" component={()=><Home user={this.state.user}/>} /> */}
             <Route exact path="/login" element={<Login func={this.pull_data}/>} />
             <Route exact path="/register" element={<Register/>} />
             <Route exact path="/forgot" element={<Forgot/>} />
-            <Route exact path="/home" element={<Post/>} />
+            <Route exact path="/home" element={<Post state={islogin}/>} />
+            <Route exact path="/question" element={<Register/>} />
           </Routes>
         </div>
         <div className='rightbar'>

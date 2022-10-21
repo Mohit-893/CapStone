@@ -1,6 +1,4 @@
 import React, { Component, useState } from 'react';
-import PropTypes from 'prop-types';
-import axios from 'axios';
 import BeforeLogin from './Feeds/BeforeLogin';
 import AfterLogin from './Feeds/AfterLogin';
 
@@ -30,6 +28,7 @@ class Home extends Component {
         if(this.props.state){
             return (
                 <div>
+                    {/* <div>{(this.props.post)}</div> */}
                 {
                     items.map((item) => (
                         <>
@@ -44,6 +43,7 @@ class Home extends Component {
         else{
             return(
                 <div>
+                    {/* <div>{(this.props.post)}</div> */}
                 {
                     items.map((item) => (
                         <>

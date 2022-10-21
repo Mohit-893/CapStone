@@ -8,6 +8,9 @@ class Nav extends Component {
   constructor(props) {
     super(props);
   }
+  handleAskQuestion = () => {
+    alert('Sorry for now we dont have this feature now!!!')
+  }
 
   handleLogout = () => {
     localStorage.clear();
@@ -20,6 +23,11 @@ class Nav extends Component {
     if (this.props.state) {
       buttons = (
         <ul className="navbar-nav ml-auto mx-auto">
+          <li className="nav-item">
+            <Link to={"/question"} onClick={this.handleAskQuestion} className="nav-link">
+              Ask Question?
+            </Link>
+          </li>
           <li className="nav-item px-md-4">
             <Link to={"/login"} onClick={this.handleLogout} className="nav-link">
               Logout

@@ -8,8 +8,12 @@ class RandomJoke extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [],
-      DataisLoaded: false,
+      items: [{
+        setup:'',
+        punchline:'',
+      }],
+      DataisLoaded: true,
+      count: 0,
     };
   }
   componentDidMount() {
@@ -19,14 +23,28 @@ class RandomJoke extends Component {
       this.setState({
         items: json,
         DataisLoaded: true,
+        count: 0,
       });
     });
   }
   refreshPage() {
-    window.location.reload();
+    this.setState({
+      items:[],
+      DataisLoaded: false,
+    })
+
+    fetch("https://official-joke-api.appspot.com/random_joke")
+    .then((res) => res.json())
+    .then((json) => {
+      this.setState({
+        items: json,
+        DataisLoaded: true,
+        count: 0,
+      });
+    });
   }
   render() {
-    const { DataisLoaded, items, count } = this.state;
+    const { DataisLoaded, items } = this.state;
     if (!DataisLoaded)
       return (
         <div>
@@ -45,8 +63,7 @@ class RandomJoke extends Component {
               <br />
               {items.punchline}
             </p>
-            <p>{count}</p>
-            <a href="#" class="btn btn-primary" onClick={this.refreshPage}>Refresh</a>
+            <a href="#" class="btn btn-primary" onClick={() => {this.refreshPage()}}>Refresh</a>
           </div>
         </div>
         <div></div>

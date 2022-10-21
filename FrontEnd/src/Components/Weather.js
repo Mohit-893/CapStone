@@ -24,8 +24,7 @@ function Weather(props) {
             setPost(json);
         })
         console.log(post)
-        let doc = document.getElementsByClassName('textareaforwheather');
-        doc.innerHTML +=`<div className='container'>${post.current.weather_icons[0]}</div>`
+        document.getElementById('textareaforwheather').innerHTML = `Temperature: ${post.current.temperature}^C`;
         
     }
 
@@ -37,17 +36,35 @@ function Weather(props) {
 
 
     return (
+        <>
         <div>
             <form onSubmit={handleSubmit}>
                 <div className='form-group'>
-                    <label>City</label>
+                    
+                    <label>Know About Your Surroundings</label>
+                    <div id='textareaforwheather'></div>
                     <input type="text" className="form-control" placeholder='city' 
                     onChange={(e) => setcity(e.target.value)}/>
-                    <button className='btn btn-primary btn-block'>Login</button>
-                    <div className='textareaforwheather'></div>
+                    <button className='btn btn-primary'>Login</button>
+                    
                 </div>
             </form>
         </div>
+
+{/* <div className='my-3'>
+<div class="card">
+<div class="card-body">
+  <h6 class="card-title">Know About Your Surroundings</h6>
+  <div id='textareaforwheather'></div>
+  <p class="card-text">
+   <input type="text" placeholder='Enter your City' onChange={(e) => setcity(e.target.value)}/>
+   <button className='btn btn-primary' onClick={() => {this.handleSubmit()}}>Search</button>
+  </p>
+</div>
+</div>
+<div></div>
+</div> */}
+</>
     );
 }
 

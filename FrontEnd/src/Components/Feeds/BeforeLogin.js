@@ -14,49 +14,9 @@ function BeforeLogin(props) {
     //     }
     // }
 
-    const setthumbsupbutton = () => {
-        if(!up && !down){
-            setthumbsup(<i class="bi bi-hand-thumbs-up-fill"></i>);
-            setUp(true);
-        }
-        if(!up && down){
-            setthumbsup(<i class="bi bi-hand-thumbs-up-fill"></i>);
-            setUp(true);
-            setthumbsdown(<i class="bi bi-hand-thumbs-down"></i>)
-            setdown(false);
-        }
-        if(!up){
-            setthumbsup(<i class="bi bi-hand-thumbs-up-fill"></i>);
-            setUp(true);
-        }
-        if(up){
-            setthumbsup(<i class="bi bi-hand-thumbs-up"></i>);
-            setUp(false);
-        }
-    }
-
-    const setthumbsdownbutton = () => {
-        if(!down && !up){
-            setthumbsdown(<i class="bi bi-hand-thumbs-down-fill"></i>)
-            setdown(true);
-        }
-        if(!down && up){
-            setthumbsup(<i class="bi bi-hand-thumbs-up"></i>);
-            setUp(false);
-            setthumbsdown(<i class="bi bi-hand-thumbs-down-fill"></i>)
-            setdown(true);
-        }
-        if(!down){
-            setthumbsdown(<i class="bi bi-hand-thumbs-down-fill"></i>)
-            setdown(true);
-        }
-        if(down){
-            setthumbsdown(<i class="bi bi-hand-thumbs-down"></i>)
-            setdown(false);
-        }
-    }
+   
     return (
-        <div className='post'>
+        <div className='post'  style={{border:'1px solid goldenrod',padding:'20px'}}>
             <div className='post_info'>
                 <h4><center>{props.name}</center></h4>
                 <small>{props.id}</small>
@@ -65,10 +25,10 @@ function BeforeLogin(props) {
                 <p >{props.body}</p>
                 <button className='post_btnAnswer'>{props.email}</button><br/>
             </div >
-            <div class="container-fluid" style={{filter: 'blur(2px)'}}>
+            <div class="container-fluid" style={{filter: 'blur(2px)'}}><br/>
                 <div class="row">
-                    <div class="col" onClick={setthumbsupbutton}> {thumbsup}</div>
-                    <div class="col" onClick={setthumbsdownbutton}>{thumbsdown}</div>
+                    <div class="col">{thumbsup}</div>
+                    <div class="col">{thumbsdown}</div>
                     <div class="col"><i class="bi bi-repeat"></i></div>
                     <div class="col"><i class="bi bi-chat-left-dots"></i></div>
                     <div class="col"><i class="bi bi-share"></i></div>

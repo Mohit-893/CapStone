@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace ForumAPI.Models
 {
-    public class Post
+    public class Posts
     {
         [Key]
         public int postID { get; set; }
@@ -17,8 +14,8 @@ namespace ForumAPI.Models
         [ForeignKey("UserId")]
         public int UserId { get; set; }
 
-        [ForeignKey("commentID")]
-        public int commentID { get; set; }
+        //[ForeignKey("commentID")]
+        //public int commentID { get; set; }
 
         public int Likes { get; set; }
 

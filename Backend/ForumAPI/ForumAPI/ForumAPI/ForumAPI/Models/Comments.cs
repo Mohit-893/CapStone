@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ForumAPI.Models
 {
-    public class Comment
+    public class Comments
     {
         [Key]
         public int commentID { get; set; }

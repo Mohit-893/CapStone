@@ -18,11 +18,11 @@ namespace ForumAPI.Data
 
         }
 
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Categories> Categories { get; set; }
 
-        public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<Comments> Comments { get; set; }
 
-        public virtual DbSet<Post> Posts { get; set; }
+        public virtual DbSet<Posts> Posts { get; set; }
     }
 }

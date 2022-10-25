@@ -18,18 +18,18 @@ function BeforeLogin(props) {
     return (
         <div className='post'  style={{border:'1px solid goldenrod',padding:'20px'}}>
             <div className='post_info'>
-                <h4><center>{props.name}</center></h4>
+                <h4><center>{props.title}</center></h4>
                 <small>{props.id}</small>
             </div>
             <div className='post_body' style={{filter: 'blur(2px)'}}>
                 <p >{props.body}</p>
-                <button className='post_btnAnswer'>{props.email}</button><br/>
+                <button className='post_btnAnswer'>{props.name}</button><br/>
             </div >
-            <div class="container-fluid" style={{filter: 'blur(2px)'}}><br/>
-                <div class="row">
-                    <div class="col">{thumbsup}</div>
-                    <div class="col">{thumbsdown}</div>
-                    <div class="col"><i class="bi bi-repeat"></i></div>
+            <div class="container-fluid"><br/>
+                <div class="row" style={{filter:'blur(1px)'}}>
+                    {props.likes}<div class="col">{thumbsup}</div>
+                    {props.dislikes}<div class="col">{thumbsdown}</div>
+                    {props.views}<div class="col"><i class="bi bi-eye"></i></div>
                     <div class="col"><i class="bi bi-chat-left-dots"></i></div>
                     <div class="col"><i class="bi bi-share"></i></div>
                 </div>

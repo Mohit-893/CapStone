@@ -13,6 +13,8 @@ import Post from './Components/Post';
 import Weather from './Components/Weather';
 import RandomJoke from './Components/RandomJoke';
 import Tasktodo from './Components/Tasktodo';
+import AskQuestion from './Components/AskQuestion';
+import PostReply from './Components/PostReply';
 
 export default class App extends Component {
 
@@ -57,8 +59,9 @@ pull_post = (data) => {
             <Route exact path="/login" element={<Login func={this.pull_data}/>} />
             <Route exact path="/register" element={<Register/>} />
             <Route exact path="/forgot" element={<Forgot/>} />
-            <Route exact path="/home" element={<Post state={islogin}/>} />
-            <Route exact path="/question" element={<Register/>} />
+            <Route exact path="/post" element={<Post state={islogin}/>} />
+            <Route exact path="/question" element={<AskQuestion/>} />
+            <Route exact path="/comment" element={<PostReply/>} />
           </Routes>
         </div>
         <div className='rightbar'>

@@ -13,7 +13,7 @@ class Home extends Component {
     }
 
     componentDidMount(){
-        fetch('https://jsonplaceholder.typicode.com/comments').then((res) => res.json()).then((json) => {
+        fetch('https://localhost:44384/api/forum/allposts').then((res) => res.json()).then((json) => {
             this.setState({
                 items: json,
                 DataisLoaded: true
@@ -32,7 +32,7 @@ class Home extends Component {
                 {
                     items.map((item) => (
                         <>
-                        <AfterLogin id={item.id} name={item.name} email={item.email} body={item.body}/>
+                        <AfterLogin id={item.postID} name={item.authorName} title={item.title} body={item.body} likes={item.likes} dislikes={item.dislikes} views={item.viewsCount}/>
                         <br/>
                         </> 
                     ))
@@ -47,7 +47,7 @@ class Home extends Component {
                 {
                     items.map((item) => (
                         <>
-                        <BeforeLogin id={item.id} name={item.name} email={item.email} body={item.body}/>
+                        <BeforeLogin id={item.postID} name={item.authorName} title={item.title} body={item.body} likes={item.likes} dislikes={item.dislikes} views={item.viewsCount}/>
                         <br/>
                         </>    
                     ))

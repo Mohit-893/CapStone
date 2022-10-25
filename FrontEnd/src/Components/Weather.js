@@ -24,7 +24,7 @@ function Weather(props) {
             setPost(json);
         })
         console.log(post)
-        document.getElementById('textareaforwheather').innerHTML = `Temperature: ${post.current.temperature}^C`;
+        document.getElementById('textareaforwheather').innerHTML = `${post.current.temperature}^C`;
         
     }
 
@@ -37,11 +37,12 @@ function Weather(props) {
 
     return (
         <>
-        <div>
+        <div className='card'>
             <form onSubmit={handleSubmit}>
                 <div className='form-group'>
                     
-                    <label>Know About Your Surroundings</label>
+                    <label><strong>Know About Your Surroundings</strong></label>
+                    <div>Temperature : <span id='textareaforwheather'></span></div>
                     <div id='textareaforwheather'></div>
                     <input type="text" className="form-control" placeholder='city' 
                     onChange={(e) => setcity(e.target.value)}/>

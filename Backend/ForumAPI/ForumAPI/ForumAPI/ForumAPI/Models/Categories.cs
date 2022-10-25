@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ForumAPI.Models
 {
-    public class Category
+    public class Categories
     {
         [Key]
         public int categoryId { get; set; }

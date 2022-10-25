@@ -45,7 +45,7 @@ namespace ForumAPI.Controllers
             return NotFound("User not Found");
         }
 
-        private string Generate(User user)
+        private string Generate(Users user)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
@@ -68,7 +68,7 @@ namespace ForumAPI.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
 
         }
-        private User Authenticate(Login login)
+        private Users Authenticate(Login login)
         {
             var currentUser = _context.Users.FirstOrDefault(o => o.Username.ToLower() == login.Username.ToLower() && o.Password == login.Password);
             if (currentUser != null)
@@ -86,13 +86,13 @@ namespace ForumAPI.Controllers
             return Ok($"Hi {currentuser.FirstName} {currentuser.LastName}");
         }
 
-        private User GetCurrentUser()
+        private Users GetCurrentUser()
         {
             var identity = HttpContext.User.Identity as ClaimsIdentity;
             if (identity != null)
             {
                 var userClaims = identity.Claims;
-                var user = new User()
+                var user = new Users()
                 {
                     Username = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.NameIdentifier)?.Value,
                     EmailAddress = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value,
@@ -109,14 +109,14 @@ namespace ForumAPI.Controllers
      
 
         [HttpGet("getallusers")]
-        public IEnumerable<User> GetUsers()
+        public IEnumerable<Users> GetUsers()
         {
             return _context.Users.ToList();
         }
 
         [HttpPost("register")]
 
-        public async Task<IActionResult> PostUser(User user)
+        public async Task<IActionResult> PostUser(Users user)
         {
           await _context.Users.AddAsync(user);
             _context.SaveChanges();

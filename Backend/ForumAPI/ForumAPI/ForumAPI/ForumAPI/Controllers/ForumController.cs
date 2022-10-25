@@ -1,6 +1,7 @@
 ﻿using ForumAPI.Data;
 using ForumAPI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,19 @@ namespace ForumAPI.Controllers
         public IEnumerable<Posts> GetPosts()
         {
             return _context.Posts.ToList();
+        }
+
+
+        [HttpGet("allposts/{id}")]
+        public IEnumerable<Posts> SearchbyId(int cat_id)
+        {
+            return  _context.Posts.Where(x => x.categoryId == cat_id).ToList();
+        }
+        [HttpPost("addquestion")]
+        public void AddPost(Posts pst)
+        {
+            _context.Posts.Add(pst);
+            _context.SaveChanges();
         }
 
     }

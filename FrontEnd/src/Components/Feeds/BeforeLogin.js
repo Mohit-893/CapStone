@@ -1,20 +1,7 @@
-import React,{useState} from 'react';
+import React from 'react';
 
 function BeforeLogin(props) {
-    const [thumbsup, setthumbsup] = useState(<i class="bi bi-hand-thumbs-up"></i>);
-    const [thumbsdown, setthumbsdown] = useState(<i class="bi bi-hand-thumbs-down"></i>);
-    const [up,setUp] = useState(false);
-    const [down,setdown] = useState(false);
 
-
-    // const down = () => {
-    //     if({thumbsup} == <i class="bi bi-hand-thumbs-up-fill"></i>){
-    //         setthumbsup(<i class="bi bi-hand-thumbs-up"></i>);
-    //         setthumbsdown(<i class="bi bi-hand-thumbs-down-fill"></i>);
-    //     }
-    // }
-
-   
     return (
         <div className='post'  style={{border:'1px solid goldenrod',padding:'20px'}}>
             <div className='post_info'>
@@ -25,13 +12,13 @@ function BeforeLogin(props) {
                 <p >{props.body}</p>
                 <button className='post_btnAnswer'>{props.name}</button><br/>
             </div >
-            <div class="container-fluid"><br/>
-                <div class="row" style={{filter:'blur(1px)'}}>
-                    {props.likes}<div class="col">{thumbsup}</div>
-                    {props.dislikes}<div class="col">{thumbsdown}</div>
-                    {props.views}<div class="col"><i class="bi bi-eye"></i></div>
-                    <div class="col"><i class="bi bi-chat-left-dots"></i></div>
-                    <div class="col"><i class="bi bi-share"></i></div>
+            <div className="container-fluid"><br/>
+                <div className="row" style={{filter:'blur(1px)'}}>
+                    {props.likes}<div className="col"><i className="bi bi-hand-thumbs-up"></i></div>
+                    {props.dislikes}<div className="col"><i className="bi bi-hand-thumbs-down"></i></div>
+                    {props.views}<div className="col"><i className="bi bi-eye"></i></div>
+                    <div className="col"><i className="bi bi-chat-left-dots"></i></div>
+                    <div className="col"><i className="bi bi-share"></i></div>
                 </div>
             </div>
         </div>

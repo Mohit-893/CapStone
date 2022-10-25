@@ -9,7 +9,7 @@ function AfterLogin(props) {
             <div>
                 {/* <img src={flake}  style={{height:'50px',width:'80px'}}/> */}
               <Link className="navbar-brand" to={"/"} style={{color:'goldenrod'}}>
-              <i class="bi bi-house"></i>
+              <i className="bi bi-house"></i>
               </Link>
             </div>
             <div className="row mx-md-n5 px-md-4">

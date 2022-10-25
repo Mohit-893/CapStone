@@ -1,64 +1,61 @@
 import React, { useState } from "react";
-import {Navigate , Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function AfterLogin(props) {
   const [thumbsup, setthumbsup] = useState(
-    <i class="bi bi-hand-thumbs-up"></i>
+    <i className="bi bi-hand-thumbs-up"></i>
   );
   const [thumbsdown, setthumbsdown] = useState(
-    <i class="bi bi-hand-thumbs-down"></i>
+    <i className="bi bi-hand-thumbs-down"></i>
   );
   const [up, setUp] = useState(false);
   const [down, setdown] = useState(false);
 
   // const down = () => {
-  //     if({thumbsup} == <i class="bi bi-hand-thumbs-up-fill"></i>){
-  //         setthumbsup(<i class="bi bi-hand-thumbs-up"></i>);
-  //         setthumbsdown(<i class="bi bi-hand-thumbs-down-fill"></i>);
+  //     if({thumbsup} == <i className="bi bi-hand-thumbs-up-fill"></i>){
+  //         setthumbsup(<i className="bi bi-hand-thumbs-up"></i>);
+  //         setthumbsdown(<i className="bi bi-hand-thumbs-down-fill"></i>);
   //     }
   // }
-  const handleComment = () => {
-    <Navigate to='/comment' />
-  }
 
   const setthumbsupbutton = () => {
     if (!up && !down) {
-      setthumbsup(<i class="bi bi-hand-thumbs-up-fill"></i>);
+      setthumbsup(<i className="bi bi-hand-thumbs-up-fill"></i>);
       setUp(true);
     }
     if (!up && down) {
-      setthumbsup(<i class="bi bi-hand-thumbs-up-fill"></i>);
+      setthumbsup(<i className="bi bi-hand-thumbs-up-fill"></i>);
       setUp(true);
-      setthumbsdown(<i class="bi bi-hand-thumbs-down"></i>);
+      setthumbsdown(<i className="bi bi-hand-thumbs-down"></i>);
       setdown(false);
     }
     if (!up) {
-      setthumbsup(<i class="bi bi-hand-thumbs-up-fill"></i>);
+      setthumbsup(<i className="bi bi-hand-thumbs-up-fill"></i>);
       setUp(true);
     }
     if (up) {
-      setthumbsup(<i class="bi bi-hand-thumbs-up"></i>);
+      setthumbsup(<i className="bi bi-hand-thumbs-up"></i>);
       setUp(false);
     }
   };
 
   const setthumbsdownbutton = () => {
     if (!down && !up) {
-      setthumbsdown(<i class="bi bi-hand-thumbs-down-fill"></i>);
+      setthumbsdown(<i className="bi bi-hand-thumbs-down-fill"></i>);
       setdown(true);
     }
     if (!down && up) {
-      setthumbsup(<i class="bi bi-hand-thumbs-up"></i>);
+      setthumbsup(<i className="bi bi-hand-thumbs-up"></i>);
       setUp(false);
-      setthumbsdown(<i class="bi bi-hand-thumbs-down-fill"></i>);
+      setthumbsdown(<i className="bi bi-hand-thumbs-down-fill"></i>);
       setdown(true);
     }
     if (!down) {
-      setthumbsdown(<i class="bi bi-hand-thumbs-down-fill"></i>);
+      setthumbsdown(<i className="bi bi-hand-thumbs-down-fill"></i>);
       setdown(true);
     }
     if (down) {
-      setthumbsdown(<i class="bi bi-hand-thumbs-down"></i>);
+      setthumbsdown(<i className="bi bi-hand-thumbs-down"></i>);
       setdown(false);
     }
   };
@@ -76,26 +73,26 @@ function AfterLogin(props) {
         <br />
       </div>
       <br />
-      <div class="container-fluid">
-        <div class="row">
+      <div className="container-fluid">
+        <div className="row">
         {props.likes}
-          <div class="col" onClick={setthumbsupbutton}>
+          <div className="col" onClick={setthumbsupbutton}>
             {" "}
             {thumbsup}
           </div>
           {props.dislikes}
-          <div class="col" onClick={setthumbsdownbutton}>
+          <div className="col" onClick={setthumbsdownbutton}>
             {thumbsdown}
           </div>
           {props.views}
-          <div class="col">
-          <i class="bi bi-eye"></i>
+          <div className="col">
+          <i className="bi bi-eye"></i>
           </div>
-          <div class="col" >
-            <Link to={'/comment'} state={{ question:(props.title), name:(props.name), id:(props.id) }}><i class="bi bi-chat-left-dots"></i></Link>
+          <div className="col" >
+            <Link to={'/comment'} state={{ question:(props.title), name:(props.name), id:(props.id) }}><i className="bi bi-chat-left-dots"></i></Link>
           </div>
-          <div class="col" onClick={() => {alert("This feature is in progress"+'\n'+"You may see this feature soon...")}}>
-            <i class="bi bi-share"></i>
+          <div className="col" onClick={() => {alert("This feature is in progress \n You may see this feature soon...")}}>
+            <i className="bi bi-share"></i>
           </div>
         </div>
       </div>

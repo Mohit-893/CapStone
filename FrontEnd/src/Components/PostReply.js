@@ -12,10 +12,10 @@ function PostReply(props) {
         <form>
       <h4>{question}</h4>
       <span>{name}</span><br/><br/>
-      <div class="form-group">
+      <div className="form-group">
         <label for="exampleFormControlTextarea1">Type your Answer here</label>
         <textarea
-          class="form-control"
+          className="form-control"
           id="exampleFormControlTextarea1"
           rows="4"
         ></textarea>

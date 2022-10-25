@@ -1,40 +1,71 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState} from 'react';
+import {Navigate} from 'react-router-dom';
+import axios from 'axios';
 
 function AskQuestion(props) {
-    // const handleSubmit = () => {
-    //     alert("Thanks for patience \n Your question is saved...")
-    // }
+
+    const[cat,setCat] = useState(0)
+    const[ques, setques] = useState('')
+    const[success,setSuccess] = useState(false)
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const data = {
+            categoryId:parseInt(cat),
+            title:`${ques}`,
+            authorName:`${props.name}`,
+            body:"No one answer your question yet"
+        }
+        console.log(data); 
+        axios.post("https://localhost:44384/api/forum/addquestion",data).then(res =>{
+            console.log(res);
+                setSuccess(true);
+
+            }).catch(err => {
+                console.log(err);
+            })
+            console.log(data);   
+    }
+
+    if(success){
+        return(
+            <div>
+                <Navigate to={"/"}/>
+            </div>
+        )
+    }else{
+
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
             <h4>Enter Details below: </h4>
-            <div class="form-group">
-            <label for="exampleFormControlTextarea1">Type your question here</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+            <div className="form-group">
+            <label>Type your question here</label>
+            <textarea className="form-control" rows="4" onChange={e => setques(e.target.value)}></textarea>
             </div>
             <br/>
             <div>
             <label>Select Question category from dropdown</label>
-                <select class="form-control" style={{width:'45%'}}>
-                    <option>Select any category </option>
-                    <option>History</option>
-                    <option>Technology</option>
-                    <option>Business</option>
-                    <option>Cooking</option>
-                    <option>Science</option>
-                    <option>Motivational Quotes</option>
-                    <option>Health</option>
-                    <option>Fashion</option>
+                <select className="form-control" name="category" onChange={e => setCat(e.target.value)} style={{width:'45%'}}>
+                    <option value="0">Select any category </option>
+                    <option value="1">History</option>
+                    <option value="2">Technology</option>
+                    <option value="3">Business</option>
+                    <option value="4">Cooking</option>
+                    <option value="5">Science</option>
+                    <option value="6">Motivational Quotes</option>
+                    <option value="7">Health</option>
+                    <option value="8">Fashion</option>
                 </select>
             </div>
             <br/>
             <div>
-            <Link to={'/'} ><button className='btn btn-primary' onClick={() => {alert("Your question is submitted succesfully")}}>Submit Question</button></Link>
+           <button className='btn btn-primary'>Submit Question</button>
             </div>
             </form>
         </div>
     );
+    }
 }
 
 export default AskQuestion;

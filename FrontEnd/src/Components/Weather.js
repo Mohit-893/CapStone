@@ -53,11 +53,11 @@ function Weather(props) {
         </div>
 
 {/* <div className='my-3'>
-<div class="card">
-<div class="card-body">
-  <h6 class="card-title">Know About Your Surroundings</h6>
+<div className="card">
+<div className="card-body">
+  <h6 className="card-title">Know About Your Surroundings</h6>
   <div id='textareaforwheather'></div>
-  <p class="card-text">
+  <p className="card-text">
    <input type="text" placeholder='Enter your City' onChange={(e) => setcity(e.target.value)}/>
    <button className='btn btn-primary' onClick={() => {this.handleSubmit()}}>Search</button>
   </p>

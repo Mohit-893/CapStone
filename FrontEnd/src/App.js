@@ -6,7 +6,6 @@ import Nav from './Components/Nav';
 import Login from './Components/Login';
 import Register from './Components/Register';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import axios from 'axios';
 import Forgot from './Components/Forgot';
 import LeftSideBar from './Components/LeftSideBar';
 import Post from './Components/Post';
@@ -60,7 +59,7 @@ pull_post = (data) => {
             <Route exact path="/register" element={<Register/>} />
             <Route exact path="/forgot" element={<Forgot/>} />
             <Route exact path="/post" element={<Post state={islogin}/>} />
-            <Route exact path="/question" element={<AskQuestion/>} />
+            <Route exact path="/question" element={<AskQuestion name={username}/>} />
             <Route exact path="/comment" element={<PostReply/>} />
           </Routes>
         </div>

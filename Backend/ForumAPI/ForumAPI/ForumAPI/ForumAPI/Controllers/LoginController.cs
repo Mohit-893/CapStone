@@ -49,8 +49,11 @@ namespace ForumAPI.Controllers
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-            var claims = new[]
+            var s = user.UserId.ToString();
+           var claims = new[]
             {
+               
+                new Claim("userId",s),
                 new Claim("NameIdentifier",user.Username),
                 new Claim("Email",user.EmailAddress),
                 new Claim("GivenName",user.FirstName),

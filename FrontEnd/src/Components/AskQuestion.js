@@ -1,12 +1,14 @@
 import React, { useState} from 'react';
-import {Navigate} from 'react-router-dom';
+import {Navigate, useLocation} from 'react-router-dom';
 import axios from 'axios';
 
 function AskQuestion(props) {
-
+    const location = useLocation();
+    const {user} = location.state;
     const[cat,setCat] = useState(0)
     const[ques, setques] = useState('')
     const[success,setSuccess] = useState(false)
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -14,7 +16,8 @@ function AskQuestion(props) {
             categoryId:parseInt(cat),
             title:`${ques}`,
             authorName:`${props.name}`,
-            body:"No one answer your question yet"
+            body:"No one answer your question yet",
+            UserId:parseInt(user)
         }
         console.log(data); 
         axios.post("https://localhost:44384/api/forum/addquestion",data).then(res =>{

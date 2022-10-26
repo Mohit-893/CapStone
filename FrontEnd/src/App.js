@@ -21,11 +21,13 @@ export default class App extends Component {
     islogin:'',
     username:'',
     post:'',
+    userId:'',
+    category:'',
   };
 
 
 
-pull_data = (data,name) =>{
+pull_data = (data,name,id) =>{
   this.setState({
     islogin:data,
     username:name,
@@ -33,29 +35,37 @@ pull_data = (data,name) =>{
   });
 }
 
+pull_userId = (id) => {
+  this.setState({
+    userId:id,
+  })
+  console.log(this.state.userId);
+}
+
 pull_post = (data) => {
   // console.log(this.state.post);
   this.setState({
-    post:data, 
+    post:data,
+
   })
   // console.log(this.state.post);
 }
 
   render(){
-    const {islogin ,username } = this.state;
+    const {islogin ,username,userId } = this.state;
     // console.log(this.state.post);
   return (
     <BrowserRouter>
     <div className="App">
-      <Nav state={islogin} name={username}/>
+      <Nav state={islogin} name={username} user={this.state.userId}/>
       <br/><br/><br/><br/>
       <div className='d-flex justify-content-center'>
         <div className='leftbar'><LeftSideBar  func={this.pull_post}/></div>
         <div className='auth-inner'>
         <Routes>
-            <Route exact path="/" element={<Home state={islogin} name={username}  post={this.state.post}/>} />
+            <Route exact path="/" element={<Home state={islogin} name={username}  post={this.state.post} user={this.state.userId}/>} />
             {/* <Route exact path="/" component={()=><Home user={this.state.user}/>} /> */}
-            <Route exact path="/login" element={<Login func={this.pull_data}/>} />
+            <Route exact path="/login" element={<Login func={this.pull_data} func2={this.pull_userId}/>} />
             <Route exact path="/register" element={<Register/>} />
             <Route exact path="/forgot" element={<Forgot/>} />
             <Route exact path="/post" element={<Post state={islogin}/>} />

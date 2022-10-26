@@ -89,7 +89,7 @@ function AfterLogin(props) {
           <i className="bi bi-eye"></i>
           </div>
           <div className="col" >
-            <Link to={'/comment'} state={{ question:(props.title), name:(props.name), id:(props.id) }}><i className="bi bi-chat-left-dots"></i></Link>
+            <Link to={'/comment'} state={{ question:(props.title), name:(props.name), id:(props.id), userid:(props.userid)}}><i className="bi bi-chat-left-dots"></i></Link>
           </div>
           <div className="col" onClick={() => {alert("This feature is in progress \n You may see this feature soon...")}}>
             <i className="bi bi-share"></i>

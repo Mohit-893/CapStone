@@ -1,14 +1,14 @@
-import React, { Component , useEffect, useState} from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState} from 'react';
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 const Login = (props) => {
     const [success, setSuccess] = useState(false);
     const [Password, setPassword] = useState('');
     const [Username, setUsername] = useState('');
     const[JwtToken,setJwtToken]=useState();
+
     
 
     const handleSubmit = async(e) => {
@@ -24,13 +24,17 @@ const Login = (props) => {
             // console.log(data);
             alert("login done")
             setSuccess(true);
-            props.func(true,data.Username);
             const token = res.data;
-            // console.log(res.data);
             let decoded= jwt_decode(token);
+            setJwtToken(decoded);
+            props.func(true,data.Username);
+            props.func2(decoded.userId);
+            
+            // console.log(res.data);
+            
             // console.log(decoded);  
             // window.decoded=decoded ;
-            setJwtToken(decoded);
+            
 
         }).catch(err => {
             // console.log(err);
@@ -42,7 +46,11 @@ const Login = (props) => {
         if(JwtToken)
         {
         // console.log("founded",JwtToken);
+        console.log(JwtToken);
         // console.log("email",JwtToken.Email);
+        // props.func2(JwtToken.userId);
+        // console.log(JwtToken.userId);
+        
         }
     }, [JwtToken])
 

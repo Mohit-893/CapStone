@@ -24,7 +24,7 @@ class Nav extends Component {
       buttons = (
         <ul className="navbar-nav ml-auto mx-auto">
           <li className="nav-item">
-            <Link to={"/question"} className="nav-link">
+            <Link to={"/question"} className="nav-link" state={{user:this.props.user}}>
               Ask Question?
             </Link>
           </li>

@@ -54,16 +54,16 @@ class RandomJoke extends Component {
     return (
       <>
         {/* <h3>Jokes</h3> */}
-        <div class="card">
-          {/* <img class="card-img-top" src="..." alt="Card image cap"/> */}
-          <div class="card-body">
-            <h5 class="card-title">Jokes</h5>
-            <p class="card-text">
+        <div className="card">
+          {/* <img className="card-img-top" src="..." alt="Card image cap"/> */}
+          <div className="card-body">
+            <h5 className="card-title">Jokes</h5>
+            <p className="card-text">
               {items.setup}
               <br />
               {items.punchline}
             </p>
-            <a href="#" class="btn btn-primary" onClick={() => {this.refreshPage()}}>Refresh</a>
+            <a href="#" className="btn btn-primary" onClick={() => {this.refreshPage()}}>Refresh</a>
           </div>
         </div>
         <div></div>

@@ -29,14 +29,21 @@ namespace ForumAPI.Controllers
 
 
         [HttpGet("allposts/{id}")]
-        public IEnumerable<Posts> SearchbyId(int cat_id)
+        public IEnumerable<Posts> SearchbyId(int id)
         {
-            return  _context.Posts.Where(x => x.categoryId == cat_id).ToList();
+            return  _context.Posts.Where(x => x.categoryId == id).ToList();
         }
         [HttpPost("addquestion")]
         public void AddPost(Posts pst)
         {
             _context.Posts.Add(pst);
+            _context.SaveChanges();
+        }
+
+        [HttpPost("postAnswer")]
+        public void AddComment(Comments cmt)
+        {
+            _context.Comments.Add(cmt);
             _context.SaveChanges();
         }
 

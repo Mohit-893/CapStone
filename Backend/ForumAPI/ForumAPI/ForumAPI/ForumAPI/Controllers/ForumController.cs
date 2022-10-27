@@ -33,6 +33,14 @@ namespace ForumAPI.Controllers
         {
             return  _context.Posts.Where(x => x.categoryId == id).ToList();
         }
+
+        [HttpGet("allpostsbykeyword/{keyword}")]
+        public IEnumerable<Posts> SearchbyKeyword(string keyword)
+        {
+            return _context.Posts.Where(x => x.title.Contains(keyword) || x.body.Contains(keyword)).ToList();
+        }
+
+
         [HttpPost("addquestion")]
         public void AddPost(Posts pst)
         {
@@ -40,11 +48,18 @@ namespace ForumAPI.Controllers
             _context.SaveChanges();
         }
 
+
         [HttpPost("postAnswer")]
         public void AddComment(Comments cmt)
         {
             _context.Comments.Add(cmt);
             _context.SaveChanges();
+        }
+
+        [HttpGet("allComments/{id}")]
+        public IEnumerable<Comments> GetComments(int id)
+        {
+            return _context.Comments.Where(x => x.postID == id).ToList();
         }
 
     }

@@ -1,114 +1,108 @@
-import React, { Component } from 'react';
-import './App.css';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import Home from './Components/Home';
-import Nav from './Components/Nav';
-import Login from './Components/Login';
-import Register from './Components/Register';
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import Forgot from './Components/Forgot';
-import LeftSideBar from './Components/LeftSideBar';
-import Post from './Components/Post';
-import Weather from './Components/Weather';
-import RandomJoke from './Components/RandomJoke';
-import Tasktodo from './Components/Tasktodo';
-import AskQuestion from './Components/AskQuestion';
-import PostReply from './Components/PostReply';
+import React, { Component } from "react";
+import "./App.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Home from "./Components/Home";
+import Nav from "./Components/Nav";
+import Login from "./Components/Login";
+import Register from "./Components/Register";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Forgot from "./Components/Forgot";
+import LeftSideBar from "./Components/LeftSideBar";
+import Weather from "./Components/Weather";
+import RandomJoke from "./Components/RandomJoke";
+import Tasktodo from "./Components/Tasktodo";
+import AskQuestion from "./Components/AskQuestion";
+import PostReply from "./Components/PostReply";
+import PostsByCatId from "./Components/PostsByCatId";
+import PostbySearchKeyword from "./Components/PostbySearchKeyword";
 
 export default class App extends Component {
-
-  state = {  
-    islogin:'',
-    username:'',
-    post:'',
-    userId:'',
-    category:'',
+  state = {
+    islogin: "",
+    username: "",
+    post: "",
+    userId: "",
+    category: "",
   };
 
+  pull_data = (data, name, id) => {
+    this.setState({
+      islogin: data,
+      username: name,
+    });
+  };
 
+  pull_userId = (id) => {
+    this.setState({
+      userId: id,
+    });
+    console.log(this.state.userId);
+  };
 
-pull_data = (data,name,id) =>{
-  this.setState({
-    islogin:data,
-    username:name,
-    
-  });
-}
+  pull_post = (data) => {
+    this.setState({
+      post: data,
+    });
+  };
 
-pull_userId = (id) => {
-  this.setState({
-    userId:id,
-  })
-  console.log(this.state.userId);
-}
-
-pull_post = (data) => {
-  // console.log(this.state.post);
-  this.setState({
-    post:data,
-
-  })
-  // console.log(this.state.post);
-}
-
-  render(){
-    const {islogin ,username,userId } = this.state;
-    // console.log(this.state.post);
-  return (
-    <BrowserRouter>
-    <div className="App">
-      <Nav state={islogin} name={username} user={this.state.userId}/>
-      <br/><br/><br/><br/>
-      <div className='d-flex justify-content-center'>
-        <div className='leftbar'><LeftSideBar  func={this.pull_post}/></div>
-        <div className='auth-inner'>
-        <Routes>
-            <Route exact path="/" element={<Home state={islogin} name={username}  post={this.state.post} user={this.state.userId}/>} />
-            {/* <Route exact path="/" component={()=><Home user={this.state.user}/>} /> */}
-            <Route exact path="/login" element={<Login func={this.pull_data} func2={this.pull_userId}/>} />
-            <Route exact path="/register" element={<Register/>} />
-            <Route exact path="/forgot" element={<Forgot/>} />
-            <Route exact path="/post" element={<Post state={islogin}/>} />
-            <Route exact path="/question" element={<AskQuestion name={username}/>} />
-            <Route exact path="/comment" element={<PostReply/>} />
-          </Routes>
+  render() {
+    const { islogin, username, userId } = this.state;
+    return (
+      <BrowserRouter>
+        <div className="App">
+          <Nav state={islogin} name={username} user={this.state.userId} />
+          <br />
+          <br />
+          <br />
+          <br />
+          <div className="d-flex justify-content-center">
+            <div className="leftbar">
+              <LeftSideBar state={islogin} user={userId} />
+            </div>
+            <div className="auth-inner">
+              <Routes>
+                <Route
+                  exact
+                  path="/"
+                  element={
+                    <Home
+                      state={islogin}
+                      name={username}
+                      user={this.state.userId}
+                    />
+                  }
+                />
+                <Route
+                  exact
+                  path="/login"
+                  element={
+                    <Login func={this.pull_data} func2={this.pull_userId} />
+                  }
+                />
+                <Route exact path="/register" element={<Register />} />
+                <Route exact path="/forgot" element={<Forgot />} />
+                <Route
+                  exact
+                  path="/question"
+                  element={<AskQuestion name={username} />}
+                />
+                <Route exact path="/comment" element={<PostReply />} />
+                <Route exact path="/postbycatId" element={<PostsByCatId />} />
+                <Route
+                  exact
+                  path="/postbySearchKeyword"
+                  element={<PostbySearchKeyword />}
+                />
+              </Routes>
+            </div>
+            <div className="rightbar">
+              <RandomJoke />
+              <Tasktodo />
+              <Weather />
+            </div>
+          </div>
         </div>
-        <div className='rightbar'>
-          <RandomJoke/>
-          <Tasktodo/>
-          <Weather/>
-        </div>
-        {/* <div className='rightbar'><Weather/></div> */}
-
-      </div>
-
-
-    </div>
-    </BrowserRouter>
-
-
-
-    // <>
-    //  <Nav user={this.state.user} setUser={this.setUser}/>
-    //   <div className='d-flex justify-content-center'>
-    //     <div className='leftbar'><LeftSideBar/></div>
-    //     <div className='auth-inner'>
-    //       <BrowserRouter>
-    //       <Routes>
-    //          <Route exact path="/" element={<Home user={this.state.user}/>} />
-    //          {/* <Route exact path="/" component={()=><Home user={this.state.user}/>} /> */}
-    //          <Route exact path="/login" element={<Login setUser={this.setUser}/>} />
-    //          <Route exact path="/register" element={<Register/>} />
-    //          <Route exact path="/forgot" element={<Forgot/>} />
-    //          <Route exact path="/home" element={<Post/>} />
-    //        </Routes>
-    //       </BrowserRouter>
-    //     </div>
-    //     <div className='rightbar'><RandomJoke/></div>
-    //   </div>
-    // </>
-    
-  );
+      </BrowserRouter>
+    );
   }
 }
-

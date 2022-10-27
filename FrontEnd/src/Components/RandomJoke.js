@@ -53,9 +53,7 @@ class RandomJoke extends Component {
       );
     return (
       <>
-        {/* <h3>Jokes</h3> */}
         <div className="card">
-          {/* <img className="card-img-top" src="..." alt="Card image cap"/> */}
           <div className="card-body">
             <h5 className="card-title">Jokes</h5>
             <p className="card-text">

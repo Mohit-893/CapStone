@@ -1,21 +1,12 @@
 import React, { Component } from "react";
-import { Link, Navigate } from "react-router-dom";
-import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import AfterLogin from "./Header/AfterLogin";
 import BeforeLogin from "./Header/BeforeLogin";
 
 class Nav extends Component {
-  constructor(props) {
-    super(props);
-  }
-  // handleAskQuestion = () => {
-  //   alert('Sorry for now we dont have this feature now!!!')
-  // }
-
   handleLogout = () => {
     localStorage.clear();
-    this.props.setState({islogin:''});
-    // <Navigate to="/login" />
+    this.props.setState({ islogin: "" });
   };
 
   render() {
@@ -24,19 +15,25 @@ class Nav extends Component {
       buttons = (
         <ul className="navbar-nav ml-auto mx-auto">
           <li className="nav-item">
-            <Link to={"/question"} className="nav-link" state={{user:this.props.user}}>
+            <Link
+              to={"/question"}
+              className="nav-link"
+              state={{ user: this.props.user }}
+            >
               Ask Question?
             </Link>
           </li>
           <li className="nav-item px-md-4">
-            <Link to={"/login"} onClick={this.handleLogout} className="nav-link">
+            <Link
+              to={"/login"}
+              onClick={this.handleLogout}
+              className="nav-link"
+            >
               Logout
             </Link>
           </li>
           <li className="nav-item px-md-4">
-            <Link className="nav-link">
-              Hi, {this.props.name}
-            </Link>
+            <Link className="nav-link">Hi, {this.props.name}</Link>
           </li>
         </ul>
       );
@@ -56,16 +53,11 @@ class Nav extends Component {
         </ul>
       );
     }
-    if(this.props.state){
-      return (
-        <AfterLogin buttons={buttons}/>
-      );
-    }else{
-      return(
-        <BeforeLogin buttons={buttons}/>
-      );
+    if (this.props.state) {
+      return <AfterLogin buttons={buttons} user={this.props.user} />;
+    } else {
+      return <BeforeLogin buttons={buttons} />;
     }
-    
   }
 }
 

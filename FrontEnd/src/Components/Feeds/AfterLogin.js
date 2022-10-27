@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function AfterLogin(props) {
   const [thumbsup, setthumbsup] = useState(
@@ -10,13 +10,6 @@ function AfterLogin(props) {
   );
   const [up, setUp] = useState(false);
   const [down, setdown] = useState(false);
-
-  // const down = () => {
-  //     if({thumbsup} == <i className="bi bi-hand-thumbs-up-fill"></i>){
-  //         setthumbsup(<i className="bi bi-hand-thumbs-up"></i>);
-  //         setthumbsdown(<i className="bi bi-hand-thumbs-down-fill"></i>);
-  //     }
-  // }
 
   const setthumbsupbutton = () => {
     if (!up && !down) {
@@ -60,7 +53,10 @@ function AfterLogin(props) {
     }
   };
   return (
-    <div className="post" style={{border:'1px solid goldenrod',padding:'20px'}}>
+    <div
+      className="post"
+      style={{ border: "1px solid goldenrod", padding: "20px" }}
+    >
       <div className="post_info">
         <h4>
           <center>{props.title}</center>
@@ -75,7 +71,7 @@ function AfterLogin(props) {
       <br />
       <div className="container-fluid">
         <div className="row">
-        {props.likes}
+          {props.likes}
           <div className="col" onClick={setthumbsupbutton}>
             {" "}
             {thumbsup}
@@ -86,13 +82,20 @@ function AfterLogin(props) {
           </div>
           {props.views}
           <div className="col">
-          <i className="bi bi-eye"></i>
+            <i className="bi bi-eye"></i>
           </div>
-          <div className="col" >
-            <Link to={'/comment'} state={{ question:(props.title), name:(props.name), id:(props.id), userid:(props.userid)}}><i className="bi bi-chat-left-dots"></i></Link>
-          </div>
-          <div className="col" onClick={() => {alert("This feature is in progress \n You may see this feature soon...")}}>
-            <i className="bi bi-share"></i>
+          <div className="col">
+            <Link
+              to={"/comment"}
+              state={{
+                question: props.title,
+                name: props.name,
+                id: props.id,
+                userid: props.userid,
+              }}
+            >
+              <i className="bi bi-chat-left-dots"></i>
+            </Link>
           </div>
         </div>
       </div>

@@ -2,6 +2,11 @@
     display: flex;
     flex-direction: column;
 }
+.removelink {
+    text-decoration: none;
+    color: black;
+}
+
 .sidebarOptions{
     display: flex;
     align-items: center;

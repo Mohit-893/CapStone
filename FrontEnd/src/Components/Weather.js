@@ -1,11 +1,10 @@
-// import { useState } from "react";
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState,useEffect } from "react";
+
 
 function Weather(props) {
   const [city, setcity] = useState("");
   const [post, setPost] = useState("");
-  const [state, setState] = useState("");
+  const [state, setState] = useState(false);
   let access_token = "0653063a7b472ac20274d9bb8a70a80c";
   let url = `http://api.weatherstack.com/current?access_key=${access_token}&query=${city}`;
 
@@ -15,6 +14,7 @@ function Weather(props) {
       .then((res) => res.json())
       .then((json) => {
         setPost(json);
+        setState(true)
       });
     console.log(post);
     document.getElementById(
@@ -22,11 +22,11 @@ function Weather(props) {
     ).innerHTML = `${post.current.temperature}^C`;
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (state) {
       console.log(state);
     }
-  }, []);
+  }, [state]);
 
   return (
     <>

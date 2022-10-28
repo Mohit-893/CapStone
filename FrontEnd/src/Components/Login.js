@@ -22,7 +22,7 @@ const Login = (props) => {
       .then((res) => {
         localStorage.setItem("token", res.token);
         // console.log(data);
-        alert("login done");
+        // alert("login done");
         setSuccess(true);
         const token = res.data;
         let decoded = jwt_decode(token);

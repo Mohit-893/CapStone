@@ -10,25 +10,32 @@ function AfterLogin(props) {
   );
   const [up, setUp] = useState(false);
   const [down, setdown] = useState(false);
+  const [countlike, setCountlike] = useState(props.likes)
+  const [countdislikes, setCountdislikes] = useState(props.dislikes)
 
   const setthumbsupbutton = () => {
     if (!up && !down) {
       setthumbsup(<i className="bi bi-hand-thumbs-up-fill"></i>);
       setUp(true);
+      setCountlike(countlike+1);
     }
     if (!up && down) {
       setthumbsup(<i className="bi bi-hand-thumbs-up-fill"></i>);
       setUp(true);
+      setCountlike(countlike+1);
       setthumbsdown(<i className="bi bi-hand-thumbs-down"></i>);
       setdown(false);
+      setCountdislikes(countdislikes-1);
     }
     if (!up) {
       setthumbsup(<i className="bi bi-hand-thumbs-up-fill"></i>);
       setUp(true);
+      setCountlike(countlike+1);
     }
     if (up) {
       setthumbsup(<i className="bi bi-hand-thumbs-up"></i>);
       setUp(false);
+      setCountlike(countlike-1)
     }
   };
 
@@ -36,20 +43,25 @@ function AfterLogin(props) {
     if (!down && !up) {
       setthumbsdown(<i className="bi bi-hand-thumbs-down-fill"></i>);
       setdown(true);
+      setCountdislikes(countdislikes+1)
     }
     if (!down && up) {
       setthumbsup(<i className="bi bi-hand-thumbs-up"></i>);
       setUp(false);
+      setCountlike(countlike-1)
       setthumbsdown(<i className="bi bi-hand-thumbs-down-fill"></i>);
       setdown(true);
+      setCountdislikes(countdislikes+1)
     }
     if (!down) {
       setthumbsdown(<i className="bi bi-hand-thumbs-down-fill"></i>);
       setdown(true);
+      setCountdislikes(countdislikes+1);
     }
     if (down) {
       setthumbsdown(<i className="bi bi-hand-thumbs-down"></i>);
       setdown(false);
+      setCountdislikes(countdislikes-1)
     }
   };
   return (
@@ -71,12 +83,12 @@ function AfterLogin(props) {
       <br />
       <div className="container-fluid">
         <div className="row">
-          {props.likes}
+          {countlike}
           <div className="col" onClick={setthumbsupbutton}>
             {" "}
             {thumbsup}
           </div>
-          {props.dislikes}
+          {countdislikes}
           <div className="col" onClick={setthumbsdownbutton}>
             {thumbsdown}
           </div>

@@ -33,7 +33,7 @@ class Nav extends Component {
             </Link>
           </li>
           <li className="nav-item px-md-4">
-            <Link className="nav-link">Hi, {this.props.name}</Link>
+            <Link  to='/user' className="nav-link" state={{ user: this.props.user }}>Hi, {this.props.name}</Link>
           </li>
         </ul>
       );

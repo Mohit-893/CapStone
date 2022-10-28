@@ -62,5 +62,18 @@ namespace ForumAPI.Controllers
             return _context.Comments.Where(x => x.postID == id).ToList();
         }
 
+        [HttpGet("getpostbyUserId/{id}")]
+        public IEnumerable<Posts> GetPostByUserId(int id)
+        {
+            return _context.Posts.Where(x => x.UserId == id).ToList();
+        }
+
+        [HttpGet("getcommentbyUserId/{id}")]
+        public IEnumerable<Comments> GetCommentsByUserId(int id)
+        {
+            return _context.Comments.Where(x => x.UserId == id).ToList();
+        }
+
+
     }
 }

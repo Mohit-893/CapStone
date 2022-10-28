@@ -59,15 +59,14 @@ class RandomJoke extends Component {
               <br />
               {items.punchline}
             </p>
-            <a
-              href="#"
+            <button
               className="btn btn-primary"
               onClick={() => {
                 this.refreshPage();
               }}
             >
               Refresh
-            </a>
+            </button>
           </div>
         </div>
         <div></div>

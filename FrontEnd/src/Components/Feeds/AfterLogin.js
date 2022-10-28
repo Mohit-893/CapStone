@@ -66,18 +66,18 @@ function AfterLogin(props) {
   };
   return (
     <div
-      className="post"
+      className="post rounded-5"
       style={{ border: "1px solid goldenrod", padding: "20px" }}
     >
       <div className="post_info">
         <h4>
           <center>{props.title}</center>
         </h4>
-        <small>{props.id}</small>
+        {/* <small>{props.id}</small> */}
       </div>
       <div className="post_body">
         <p>{props.body}</p>
-        <button className="post_btnAnswer">{props.name}</button>
+       <strong>Posted by: </strong><button className="btn btn-light rounded-pill">{props.name}</button>
         <br />
       </div>
       <br />

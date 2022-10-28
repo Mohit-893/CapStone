@@ -21,8 +21,6 @@ const Login = (props) => {
       .post("https://localhost:44384/Api/login/gettoken", data)
       .then((res) => {
         localStorage.setItem("token", res.token);
-        // console.log(data);
-        // alert("login done");
         setSuccess(true);
         const token = res.data;
         let decoded = jwt_decode(token);
@@ -58,7 +56,7 @@ const Login = (props) => {
               placeholder="Email"
               onChange={(e) => setUsername(e.target.value)}
             />
-          </div>
+          </div><br/>
 
           <div className="form-group">
             <label>Password</label>

@@ -19,7 +19,7 @@ function Weather(props) {
     console.log(post);
     document.getElementById(
       "textareaforwheather"
-    ).innerHTML = `${post.current.temperature}^C`;
+    ).innerHTML = `${post.current.temperature}°C`;
   };
 
   useEffect(() => {
@@ -35,7 +35,7 @@ function Weather(props) {
           <div className="form-group">
             <label>
               <strong>Know About Your Surroundings</strong>
-            </label>
+            </label><br/>
             <div>
               Temperature : <span id="textareaforwheather"></span>
             </div>
@@ -45,8 +45,8 @@ function Weather(props) {
               className="form-control"
               placeholder="city"
               onChange={(e) => setcity(e.target.value)}
-            />
-            <button className="btn btn-primary">Login</button>
+            /><br/>
+            <button className="btn btn-primary">Get Temperature</button>
           </div>
         </form>
       </div>

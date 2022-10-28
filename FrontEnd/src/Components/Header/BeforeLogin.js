@@ -1,24 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import flake from "../../images/logo.png";
+import flake from "../../images/logo2.png";
 
 function BeforeLogin(props) {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark text-white fixed-top">
       <div className="container collapse navbar-collapse position-relative nav-item px-md-4">
         <div>
-          <img
+          <Link to={"/"}><img
             src={flake}
             alt=""
-            style={{ height: "50px", width: "80px", marginRight: "60px" }}
-          />
-          <Link
+            style={{ height: "auto", width: "160px", marginRight: "160px", marginLeft:"-100px" }}
+          /></Link>
+          {/* <Link
             className="navbar-brand"
             to={"/"}
             style={{ color: "goldenrod", marginRight: "100px" }}
           >
             <i className="bi bi-house"></i>
-          </Link>
+          </Link> */}
         </div>
         {/* <div className="row mx-md-n5 px-md-4">
                            <div className="col px-md-4">
@@ -34,7 +34,7 @@ function BeforeLogin(props) {
                                <div className="p-2 bg-dark"><Link to={"/post"} style={{color:'black'}}><i className="bi bi-card-checklist lead"></i></Link></div>
                            </div>
                        </div> */}
-        <div>
+        <div style={{marginLeft:"100px"}}>
           <form className="d-flex px-md-4">
             <input
               className="form-control me-2"

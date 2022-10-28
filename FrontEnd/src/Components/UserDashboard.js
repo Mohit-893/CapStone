@@ -23,25 +23,26 @@ function UserDashboard(props) {
   return (
     <div>
       <div className="container">
-        <h3>Questions Asked by user</h3>
+        <h3 className="text-center">Questions Asked by user</h3>
         {post.map((p) => (
-          <div className="card">
+          <div className="card rounded-2 my-2">
             <strong>
-              <span>{p.title}</span>
+              <span className="mx-2">{p.title}</span>
             </strong>
-            <span style={{ textAlign: "right" }}>PostId:{p.postID}</span>
+            <span style={{ textAlign: "right", fontSize:'0.8rem'}}>PostId:{p.postID}</span>
           </div>
         ))}
       </div>
       <br />
+      <br/>
       <div className="conatiner">
-        <h3>Comments posts by user</h3>
+        <center><h3>Comments posts by user</h3></center>
         {comment.map((c) => (
-          <div className="card">
+          <div className="card rounded-2 my-2">
           <strong>
-            <span>{c.comment}</span>
+            <span className="mx-2">{c.comment}</span>
           </strong>
-          <span style={{ textAlign: "right" }}>on PostId:{c.postID}</span>
+          <span style={{ textAlign: "right", fontSize:'0.8rem'}}>PostId:{c.postID}</span>
         </div>
         ))}
       </div>

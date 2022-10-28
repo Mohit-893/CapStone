@@ -32,9 +32,10 @@ class Nav extends Component {
               Logout
             </Link>
           </li>
-          <li className="nav-item px-md-4">
-            <Link  to='/user' className="nav-link" state={{ user: this.props.user }}>Hi, {this.props.name}</Link>
+          <li className="nav-item px-md-4 nav-link">
+            Hi, {this.props.name}
           </li>
+          <li  className="nav-item px-md-4"><Link to='/userprofile' className="nav-link" state={{ user: this.props.user }}><h4><i class="bi bi-person-circle"></i></h4></Link></li>
         </ul>
       );
     } else {

@@ -16,6 +16,7 @@ import PostReply from "./Components/PostReply";
 import PostsByCatId from "./Components/PostsByCatId";
 import PostbySearchKeyword from "./Components/PostbySearchKeyword";
 import UserDashboard from "./Components/UserDashboard";
+import UserProfile from "./Components/UserProfile";
 
 export default class App extends Component {
   state = {
@@ -88,7 +89,8 @@ export default class App extends Component {
                   element={<AskQuestion name={username} />}
                 />
                 <Route exact path="/comment" element={<PostReply />} />
-                <Route exact path="/user" element={<UserDashboard />} />
+                <Route exact path="/useractivity" element={<UserDashboard />} />
+                <Route exact path="/userprofile" element={<UserProfile/>} />
                 <Route exact path="/postbycatId" element={<PostsByCatId />} />
                 <Route
                   exact

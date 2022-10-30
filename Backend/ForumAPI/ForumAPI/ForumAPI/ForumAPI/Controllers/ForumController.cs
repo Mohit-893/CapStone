@@ -1,6 +1,7 @@
 ﻿using ForumAPI.Data;
 using ForumAPI.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,62 +20,134 @@ namespace ForumAPI.Controllers
 
         [HttpGet("allposts")]
 
-        public IEnumerable<Posts> GetPosts()
+        public IActionResult GetPosts()
         {
-            return _context.Posts.ToList();
+            try
+            {
+                var allPosts =  _context.Posts.ToList();
+                return Ok(allPosts);
+            }
+            catch(Exception ex)
+            {
+              return BadRequest(ex.Message);
+            }
         }
 
 
         [HttpGet("allposts/{id}")]
-        public IEnumerable<Posts> SearchbyId(int id)
+        public IActionResult SearchbyId(int id)
         {
-            return  _context.Posts.Where(x => x.categoryId == id).ToList();
+            try
+            {
+                var postId = _context.Posts.Where(x => x.categoryId == id).ToList();
+                return Ok(postId);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet("allpostsbykeyword/{keyword}")]
-        public IEnumerable<Posts> SearchbyKeyword(string keyword)
+        public IActionResult SearchbyKeyword(string keyword)
         {
-            return _context.Posts.Where(x => x.title.Contains(keyword) || x.body.Contains(keyword)).ToList();
-        }
+            try {
+                
+                 var Keyword =  _context.Posts.Where(x => x.title.Contains(keyword) || x.body.Contains(keyword)).ToList();
+                return Ok(Keyword);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            }
 
 
         [HttpPost("addquestion")]
         public void AddPost(Posts pst)
         {
-            _context.Posts.Add(pst);
-            _context.SaveChanges();
+            try
+            {
+                _context.Posts.Add(pst);
+                _context.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                BadRequest(ex.Message);
+            }
         }
 
 
         [HttpPost("postAnswer")]
         public void AddComment(Comments cmt)
         {
-            _context.Comments.Add(cmt);
-            _context.SaveChanges();
+            try
+            {
+                _context.Comments.Add(cmt);
+                _context.SaveChanges();
+            }
+            catch(Exception ex) {
+                BadRequest(ex.Message);
+            }
+
         }
 
         [HttpGet("allComments/{id}")]
-        public IEnumerable<Comments> GetComments(int id)
+        public IActionResult GetComments(int id)
         {
-            return _context.Comments.Where(x => x.postID == id).ToList();
+            try
+            {
+                var comments =  _context.Comments.Where(x => x.postID == id).ToList();
+                return Ok(comments);
+
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet("getpostbyUserId/{id}")]
-        public IEnumerable<Posts> GetPostByUserId(int id)
+        public IActionResult GetPostByUserId(int id)
         {
-            return _context.Posts.Where(x => x.UserId == id).ToList();
+            try
+            {
+                var postuser = _context.Posts.Where(x => x.UserId == id).ToList();
+                return Ok(postuser);
+
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet("getcommentbyUserId/{id}")]
-        public IEnumerable<Comments> GetCommentsByUserId(int id)
+        public IActionResult GetCommentsByUserId(int id)
         {
-            return _context.Comments.Where(x => x.UserId == id).ToList();
+            try
+            {
+                var commentsUser = _context.Comments.Where(x => x.UserId == id).ToList();
+                return Ok(commentsUser);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet("getUserDetails/{id}")]
-        public IEnumerable<Users> GetUser(int id)
+        public IActionResult GetUser(int id)
         {
-            return _context.Users.Where(x => x.UserId == id).ToList();
+            try
+            {
+                var getUser = _context.Users.Where(x => x.UserId == id).ToList();
+                return Ok(getUser);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 

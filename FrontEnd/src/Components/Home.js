@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import BeforeLogin from "./Feeds/BeforeLogin";
-import AfterLogin from "./Feeds/AfterLogin";
+import AfterLogin from "./AfterLogin";
 
 class Home extends Component {
   constructor(props) {
@@ -58,15 +57,44 @@ class Home extends Component {
         <div>
           {items.map((item) => (
             <>
-              <BeforeLogin
-                id={item.postID}
-                name={item.authorName}
-                title={item.title}
-                body={item.body}
-                likes={item.likes}
-                dislikes={item.dislikes}
-                views={item.viewsCount}
-              />
+              <div
+                className="post rounded-5"
+                style={{ border: "1px solid goldenrod", padding: "20px" }}
+              >
+                <div className="post_info">
+                  <h4>
+                    <center>{item.title}</center>
+                  </h4>
+                </div>
+                <div className="post_body" style={{ filter: "blur(2px)" }}>
+                  <p>{item.body}</p>
+                  <strong>Posted by: </strong>
+                  <button className="btn btn-light rounded-pill">
+                    {item.authorName}
+                  </button>
+                  <br />
+                </div>
+                <div className="container-fluid">
+                  <br />
+                  <div className="row" style={{ filter: "blur(1px)" }}>
+                    {item.likes}
+                    <div className="col">
+                      <i className="bi bi-hand-thumbs-up"></i>
+                    </div>
+                    {item.dislikes}
+                    <div className="col">
+                      <i className="bi bi-hand-thumbs-down"></i>
+                    </div>
+                    {item.views}
+                    <div className="col">
+                      <i className="bi bi-eye"></i>
+                    </div>
+                    <div className="col">
+                      <i className="bi bi-chat-left-dots"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <br />
             </>
           ))}

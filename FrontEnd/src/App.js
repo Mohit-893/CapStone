@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import jwt_decode from "jwt-decode";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Home from "./Components/Home";
 import Nav from "./Components/Nav";
@@ -27,7 +28,19 @@ export default class App extends Component {
     category: "",
   };
 
-  pull_data = (data, name, id) => {
+  componentDidMount() {
+    if (localStorage.getItem("userDetails")) {
+      const token = localStorage.getItem("userDetails");
+      let decoded = jwt_decode(token);
+      this.setState({
+        islogin:true,
+        username:decoded.GivenName,
+        userId:decoded.userId,
+      })
+    }
+  }
+
+  pull_data = (data, name) => {
     this.setState({
       islogin: data,
       username: name,
@@ -38,7 +51,6 @@ export default class App extends Component {
     this.setState({
       userId: id,
     });
-    console.log(this.state.userId);
   };
 
   pull_post = (data) => {

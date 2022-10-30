@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import AfterLogin from "./Feeds/AfterLogin";
+import AfterLogin from "./AfterLogin";
 import { useLocation } from "react-router-dom";
 
 function PostbySearchKeyword(props) {

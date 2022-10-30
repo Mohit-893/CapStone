@@ -73,7 +73,6 @@ function AfterLogin(props) {
         <h4>
           <center>{props.title}</center>
         </h4>
-        {/* <small>{props.id}</small> */}
       </div>
       <div className="post_body">
         <p>{props.body}</p>

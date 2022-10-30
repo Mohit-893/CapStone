@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import AfterLogin from "./Header/AfterLogin";
-import BeforeLogin from "./Header/BeforeLogin";
+import flake from "../images/logo2.png";
 
 class Nav extends Component {
+  state = {
+    keyword:'',
+  }
   handleLogout = () => {
-    localStorage.clear();
+    localStorage.removeItem("userDetails");
     this.props.setState({ islogin: "" });
   };
 
@@ -55,9 +57,75 @@ class Nav extends Component {
       );
     }
     if (this.props.state) {
-      return <AfterLogin buttons={buttons} user={this.props.user} />;
+      return(
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark text-white fixed-top">
+      <div className="container collapse navbar-collapse position-relative nav-item px-md-4">
+        <div>
+          <Link to={"/"} ><img
+            src={flake}
+            alt=""
+            style={{ height: "auto", width: "160px", marginRight: "100px", marginLeft:"-100px" }}
+          /></Link>
+        </div>
+        <div  style={{marginLeft:"100px"}}>
+          <form className="d-flex px-md-4 ">
+            <input
+              className="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              onChange={(e) => this.setState({keyword:e.target.value})}
+            />
+            <div className="srch">
+              <Link
+                to="/postbySearchKeyword"
+                state={{ key: this.state.keyword, user: this.props.user }}
+              >
+                <button className="btn btn-outline-success" type="submit">
+                  Search
+                </button>
+              </Link>
+            </div>
+          </form>
+        </div>
+
+        <div className="collapse navbar-collapse">{buttons}</div>
+      </div>
+    </nav>
+      );
     } else {
-      return <BeforeLogin buttons={buttons} />;
+      return(
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark text-white fixed-top">
+      <div className="container collapse navbar-collapse position-relative nav-item px-md-4">
+        <div>
+          <Link to={"/"}><img
+            src={flake}
+            alt=""
+            style={{ height: "auto", width: "160px", marginRight: "160px", marginLeft:"-100px" }}
+          /></Link>
+        </div>
+        <div style={{marginLeft:"100px"}}>
+          <form className="d-flex px-md-4">
+            <input
+              className="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <div className="srch">
+              <Link to="/login">
+                <button className="btn btn-outline-success" type="submit">
+                  Search
+                </button>
+              </Link>
+            </div>
+          </form>
+        </div>
+
+        <div className="collapse navbar-collapse">{buttons}</div>
+      </div>
+    </nav>
+      ); 
     }
   }
 }

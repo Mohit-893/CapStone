@@ -20,12 +20,16 @@ const Login = (props) => {
     await axios
       .post("https://localhost:44384/Api/login/gettoken", data)
       .then((res) => {
-        localStorage.setItem("token", res.token);
-        setSuccess(true);
-        const token = res.data;
+        localStorage.setItem("userDetails", res.data);
+        setTimeout(()=>{
+          localStorage.removeItem("userDetails");
+        },(1000*60*15))
+        
+        const token = localStorage.getItem("userDetails");
         let decoded = jwt_decode(token);
         setJwtToken(decoded);
-        props.func(true, data.Username);
+        setSuccess(true);
+        props.func(success, decoded.GivenName);
         props.func2(decoded.userId);
       })
       .catch((err) => {
@@ -34,11 +38,16 @@ const Login = (props) => {
   };
 
   useEffect(() => {
-    if (JwtToken) {
-      // console.log("founded",JwtToken);
-      console.log(JwtToken);
+    if (localStorage.getItem("userDetails")) {
+      
+      const token = localStorage.getItem("userDetails");
+      let decoded = jwt_decode(token);
+      setJwtToken(decoded);
+      setSuccess(true);
+      props.func(success, decoded.GivenName);
+      props.func2(decoded.userId);
     }
-  }, [JwtToken]);
+  }, [success],[JwtToken]);
 
   return (
     <>

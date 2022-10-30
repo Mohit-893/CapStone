@@ -58,6 +58,7 @@ namespace ForumAPI.Controllers
                 new Claim("Email",user.EmailAddress),
                 new Claim("GivenName",user.FirstName),
                 new Claim("Surname",user.LastName),
+    
 
 
             };

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, Navigate } from "react-router-dom";
-import AfterLogin from "./Feeds/AfterLogin";
+import AfterLogin from "./AfterLogin";
 
 function PostsByCatId(props) {
   const location = useLocation();
